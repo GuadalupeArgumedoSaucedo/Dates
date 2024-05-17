@@ -1,96 +1,47 @@
-"use strict"
+"use strict";
+
 // Defining global variables
 let extraPerDay = 0;
 const OUTPUTELEMENT = document.getElementById("output");
 
 window.onload = function () {
     // Getting the elements by their Ids
-    let govtChkBox = document.getElementById("govt");
-    let tt = document.getElementById("tollTag");
-    let g = document.getElementById("gps");
-    let rs = document.getElementById("roadside");
-    let w = document.getElementById("wifi");
+    const govtChkBox = document.getElementById("govt");
+    const tt = document.getElementById("tollTag");
+    const g = document.getElementById("gps");
+    const rs = document.getElementById("roadside");
+    const w = document.getElementById("wifi");
 
     // Assign the "onclick" for the elements to respective functions
     govtChkBox.onclick = onGovtChkBoxClicked;
-    g.onclick = boxClick1;
-    tt.onclick = boxClick2;
-    rs.onclick = boxClick3;
-    w.onclick = boxClick4;
-}
+    g.onclick = () => toggleOption(g, 4.95);
+    tt.onclick = () => toggleOption(tt, 3.95);
+    rs.onclick = () => toggleOption(rs, 2.95);
+    w.onclick = () => toggleOption(w, 10.00);
+};
 
-// Using the Boolean checked property
-function boxClick1() {
-    let gps = document.getElementById("gps").checked;
-    if (gps == true) {
-        extraPerDay += 4.95;
-        extraPerDay.toFixed(2);
-    }
-    if (gps == false) {
-        extraPerDay -= 4.95;
-        extraPerDay.toFixed(2);
-    }
-    OUTPUTELEMENT.innerHTML = extraPerDay.toFixed(2);
-}
-
-// Shortcut for Checking for true
-function boxClick2() {
-    let tollTag = document.getElementById("tollTag").checked;
-    if (tollTag) {
-        extraPerDay += 3.95;
-        extraPerDay.toFixed(2);
-    }
-    if (!(tollTag)) {
-        extraPerDay -= 3.95;
-        extraPerDay.toFixed(2);
-    }
-    OUTPUTELEMENT.innerHTML = extraPerDay.toFixed(2);
-}
-
-// Omit putting value in a variable
-function boxClick3() {
-    if (document.getElementById("roadside").checked) {
-        extraPerDay += 2.95;
-        extraPerDay.toFixed(2);
-    } 
-    if (!(document.getElementById("roadside").checked)) {
-        extraPerDay -= 2.95;
-        extraPerDay.toFixed(2);
-    }
-    OUTPUTELEMENT.innerHTML = extraPerDay.toFixed(2);
-}
-
-//wifi
-function boxClick4() {
-    if (document.getElementById("wifi").checked) {
-        extraPerDay += 10;
-        extraPerDay.toFixed(2);
-    } 
-    if (!(document.getElementById("wifi").checked)) {
-        extraPerDay -= 10;
-        extraPerDay.toFixed(2);
+// Generic function to handle checkbox clicks
+function toggleOption(element, amount) {
+    if (element.checked) {
+        extraPerDay += amount;
+    } else {
+        extraPerDay -= amount;
     }
     OUTPUTELEMENT.innerHTML = extraPerDay.toFixed(2);
 }
 
 // Using the onclick function with the govt box to check an additional checkbox (roadside assistance)
 function onGovtChkBoxClicked() {
-    let govt = document.getElementById("govt").checked;
-    if (govt) {
-        let roadsideChkBox = document.getElementById("roadside");
-        if (!(roadsideChkBox.checked == true)) {
+    const roadsideChkBox = document.getElementById("roadside");
+    if (this.checked) {
+        if (!roadsideChkBox.checked) {
             roadsideChkBox.checked = true;
             extraPerDay += 2.95;
-            extraPerDay.toFixed(2);
         }
-    }
-    if (!govt) {
-        console.log(extraPerDay);
-        let roadsideChkBox = document.getElementById("roadside");
-        if (roadsideChkBox.checked == true) {
-            extraPerDay -= 2.95;
-            extraPerDay.toFixed(2);
+    } else {
+        if (roadsideChkBox.checked) {
             roadsideChkBox.checked = false;
+            extraPerDay -= 2.95;
         }
     }
     OUTPUTELEMENT.innerHTML = extraPerDay.toFixed(2);

@@ -15,7 +15,7 @@ function generateDaysLeftC(){
 let capstoneTime = date3.getTime() - date1.getTime();
 let capstone = capstoneTime / msec_per_day; 
 let capstoneDays = Math.round(capstone); 
-document.getElementById('capestone').innerHTML = ` ${capstoneDays} days left until capstone`
+document.getElementById('capstone').innerHTML = ` ${capstoneDays} days left until capstone`
 }
 
 

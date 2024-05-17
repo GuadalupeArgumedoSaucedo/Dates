@@ -1,0 +1,47 @@
+/* Resetting default margins and paddings */
+body, h1, h2, h3, p, ul, ol, li, fieldset {
+    margin: 0;
+    padding: 0;
+}
+
+/* Setting default font and color */
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Styling fieldset */
+fieldset {
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Styling legend */
+legend {
+    font-weight: bold;
+}
+
+/* Styling checkboxes and labels */
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+/* Styling output element */
+#output {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* Styling for the entire page */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
