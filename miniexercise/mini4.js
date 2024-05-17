@@ -6,14 +6,12 @@ function updateTime() {
     // Format the time as a string in a human-readable format
     let currentTime = now.toLocaleTimeString();
 
-    // Update the document element with the new time
-    document.getElementById('current-time').innerText = currentTime;
+    // Log the current time to the console
+    console.log(currentTime);
 
     // Call updateTime again after 1000 milliseconds (1 second)
     setTimeout(updateTime, 1000);
 }
 
-// Set up the initial call to updateTime when the document is ready
-document.addEventListener('DOMContentLoaded', function() {
-    updateTime();
-});
+// Mimic the original setup by immediately calling updateTime
+updateTime();

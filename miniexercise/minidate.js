@@ -1,10 +1,8 @@
-let d = new Date(1996,4,16); 
+let d = new Date(1996, 4, 16);
 
 console.log(d.toString());
 
+let daysLater = new Date(d);
+daysLater.setDate(d.getDate() + 7);
 
-let daysLater = d.toDateString();
-
-d.setDate(d.getDate() + 7); 
-
-console.log(daysLater.toDateString)
+console.log(daysLater.toDateString());
